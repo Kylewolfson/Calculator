@@ -12,35 +12,29 @@ var divide = function(number1, number2) {
 };
 
 $(document).ready(function() {
-  $("form#add").submit(function(event) {
+  $("form#numInput").submit(function(event) {
     event.preventDefault();
-    var number1 = parseInt($("#add1").val());
-    var number2 = parseInt($("#add2").val());
+    var operator = $("input:radio[name=operator]:checked").val();
+    var number1 = parseInt($("#num1").val());
+    var number2 = parseInt($("#num2").val());
+    if (operator === "add") {
     var result = add(number1, number2);
     $("#output").text(result);
-  });
+  }
 
-  $("form#subtract").submit(function(event) {
-    event.preventDefault();
-    var number1 = parseInt($("#subt1").val());
-    var number2 = parseInt($("#subt2").val());
-    var result = subtract(number1, number2);
-    $("#output").text(result);
-  });
+  else if (operator === "subtract") {
+  var result = subtract(number1, number2);
+  $("#output").text(result);
+}
 
-  $("form#multiply").submit(function(event) {
-    event.preventDefault();
-    var number1 = parseInt($("#mult1").val());
-    var number2 = parseInt($("#mult2").val());
-    var result = multiply(number1, number2);
-    $("#output").text(result);
-  });
+if (operator === "multiply") {
+var result = multiply(number1, number2);
+$("#output").text(result);
+}
 
-  $("form#divide").submit(function(event) {
-    event.preventDefault();
-    var number1 = parseInt($("#div1").val());
-    var number2 = parseInt($("#div2").val());
-    var result = divide(number1, number2);
-    $("#output").text(result);
+if (operator === "divide") {
+var result = divide(number1, number2);
+$("#output").text(result);
+}
   });
 });
